@@ -13,7 +13,7 @@ HISTFILESIZE=2000
 
 # dev tools
 export EDITOR=vim
-. "$HOME/.cargo/env"
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
 
 #  NPM Stuff
 export NVM_DIR="$HOME/.nvm"
