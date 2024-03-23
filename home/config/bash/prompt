@@ -1,0 +1,21 @@
+
+bold='\[$(tput bold)\]'
+rset='\[$(tput sgr0)\]'
+
+fg_id='\[$(tput setaf 75)\]'
+bg_id='\[$(tput setab 0)\]'
+
+fg_wd='\[$(tput setaf 115)\]'
+bg_wd='\[$(tput setab 0)\]'
+
+fg_git='\[$(tput setaf 7)\]'
+bg_git='\[$(tput setab 235)\]'
+
+source /etc/bash_completion.d/git-prompt
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+export GIT_PS1_SHOWCOLORHINTS=1
+
+PS1="$bg_id$fg_id \u@\h $bg_wd$fg_wd \W $rset$bg_git$fg_git \$(__git_ps1 ' %s ' ) $rset\n\$ "

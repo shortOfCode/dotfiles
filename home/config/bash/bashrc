@@ -10,7 +10,7 @@ esac
 
 . $HOME/.config/bash/alias
 . $HOME/.config/bash/env
-. $HOME/.config/prompt
+. $HOME/.config/bash/prompt
 
 # append to the history file, don't overwrite it
 shopt -s histappend
