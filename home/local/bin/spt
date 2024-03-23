@@ -1,0 +1,11 @@
+#!/bin/bash
+
+h_prt_status=$(pacmd list-sinks | grep "active port" | grep "analog-output-headphones")
+
+if [ -z "$h_prt_status" ]
+then
+    pacmd set-sink-port 0 analog-output-headphones
+else
+    pacmd set-sink-port 0 analog-output-speaker
+fi
+

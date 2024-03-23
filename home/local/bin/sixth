@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#qutebrowser --target private-window https://trello.com/login
+surf -g -T -x https://sites.google.com/elwood.k12.ny.us/6thgrade-blueteamwebsite/home

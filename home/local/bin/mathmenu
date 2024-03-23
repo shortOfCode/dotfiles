@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Grab the answer
+if [ -n "$1" ] && [ "-b" != "$1" ]; then
+    answer=$(echo "scale=5; $1" | bc -l) 
+fi
+
+# Determine args to pass to dmenu/rofi
+while [[ $# -gt 0 && $1 != "--" ]]; do
+    shift
+done
+[[ $1 == "--" ]] && shift
+
+action=$(echo -e "Copy to clipboard\nClear\nClose" | dmenu -b -p "= $answer")
+
+case $action in
+    "Clear") $0 ;;
+    "Copy to clipboard") echo -n "$answer" | xclip -selection clipboard ;;
+    "Close") ;;
+    "") ;;
+    *) $0 "$answer $action" "--"  ;;
+esac

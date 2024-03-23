@@ -1,0 +1,19 @@
+#!/bin/bash
+
+TERM=xterm-256color
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# dev tools
+export EDITOR=vim
+. "$HOME/.cargo/env"
+
+#  NPM Stuff
+export NVM_DIR="$HOME/.nvm"

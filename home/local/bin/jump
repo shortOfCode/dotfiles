@@ -1,0 +1,36 @@
+#!/bin/bash
+
+CMD='surf -g -T -x'
+
+case $1 in
+
+    trello)
+        $CMD trello.com
+        ;;
+
+    duck)
+        $CMD duckduckgo.com
+        ;;
+
+    phind)
+        $CMD phind.com
+        ;;
+
+    radio)
+        $CMD radio-browser.info
+        ;;
+
+    weather)
+        $CMD "https://forecast.weather.gov/MapClick.php?lat=40.87902500000007&lon=-73.32593499999996" 
+        ;;
+
+    bible)
+        $CMD biblehub.com
+        ;;
+
+    *)
+        echo "where?"
+        ;;
+
+esac
+

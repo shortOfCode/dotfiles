@@ -1,0 +1,81 @@
+vim9script
+
+import "~/.config/vim/lsp.vim"
+import "~/.config/vim/color.vim"
+import "~/.config/vim/fzf.vim"
+
+# -vim-lightline
+packadd lightline.vim
+g:lightline = {
+      \ 'colorscheme': 'Tomorrow_Night',
+      \ }
+
+# -vim-accents
+packadd vim-accent
+
+# -fugitive
+packadd fugitive
+
+# -vim-gitgutter
+packadd vim-gitgutter
+
+# Interface stuff
+set encoding=UTF-8
+set nocompatible
+set laststatus=2
+set tabline=2
+set noshowmode
+set number
+set relativenumber
+set splitbelow
+set ttimeoutlen=0
+set timeoutlen=500
+set wildmenu
+syntax on
+
+# Buffer stuff
+set autoread
+set hlsearch
+set incsearch
+
+# Editing Stuff
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set linebreak
+set autoindent
+set smartindent
+set nowrap
+set backspace=indent,eol,start
+
+# Other files
+set suffixesadd=.js
+set updatetime=1000
+set undofile
+set undodir=~/.vim/undos
+set tags=~/.vim/tags
+set directory=~/tmp
+set backupdir=~/tmp
+set undodir=~/tmp
+
+# Noops
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
+
+# Motion remaps
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+nnoremap <C-h> <C-w><Left>
+nnoremap <C-j> <C-w><Down>
+nnoremap <C-k> <C-w><Up>
+nnoremap <C-l> <C-w><Right>
+
+nnoremap <S-J> <PageDown>
+nnoremap <S-K> <PageUp>
+

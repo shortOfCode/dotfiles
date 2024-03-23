@@ -1,0 +1,15 @@
+#!/bin/bash
+
+p="2022-10-31"
+m="2024-01-08"
+s="2024-01-08"
+
+now=$(date +%s)
+p_past=$(date +%s --date "$p")
+p_difference=$(($now-$p_past))
+m_past=$(date +%s --date "$m")
+m_difference=$(($now-$m_past))
+s_past=$(date +%s --date "$s")
+s_difference=$(($now-$s_past))
+
+echo "p: $(($p_difference/(3600*24))) m: $(($m_difference/(3600*24))) s: $(($s_difference/(3600*24)))"

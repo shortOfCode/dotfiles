@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# inspiration and a little code from leostera
+
+symlink() {
+    ln -snfv "`pwd`/$1" $2
+}
+
+mkdir -p $HOME/.config
+
+symlink ./home/config/tmux          $HOME/.config/tmux
+symlink ./home/config/wezterm       $HOME/.config/wezterm
+symlink ./home/config/vim           $HOME/.config/vim
+symlink ./home/config/bash          $HOME/.config/bash
+
+symlink ./home/config/vim/vimrc     $HOME/.vimrc
+symlink ./home/config/bash/bashrc   $HOME/.bashrc
+symlink ./home/config/bash/profile  $HOME/.profile
+
+

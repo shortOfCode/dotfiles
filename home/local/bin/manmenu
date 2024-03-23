@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+selected_man=$(apropos -s 1,4,5,6,7,8 . | dmenu -l 30 | awk '{print $1}')
+
+if [ -n "$selected_man" ]
+then
+    echo "$selected_man" | xargs man --troff-device=pdf | zathura -
+fi
+# | xargs man --troff-device=pdf | zathura -
