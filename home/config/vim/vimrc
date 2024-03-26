@@ -79,3 +79,6 @@ nnoremap <C-l> <C-w><Right>
 nnoremap <S-J> <PageDown>
 nnoremap <S-K> <PageUp>
 
+inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
+inoremap <expr> <S-tab> pumvisible() ? '<c-p>' : '<S-tab>'
+
