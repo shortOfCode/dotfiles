@@ -65,6 +65,10 @@ nmap <Down> <Nop>
 nmap <Left> <Nop>
 nmap <Right> <Nop>
 
+# Available for remap
+nmap + <Nop>
+nmap - <Nop>
+
 # Motion remaps
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>

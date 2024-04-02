@@ -45,3 +45,8 @@ g:LspAddServer([{name: 'tsserver',
                  \   path: 'typescript-language-server',
                  \   args: ['--stdio']
                  \ }])
+g:LspAddServer([{name: 'pylsp',
+                 \   filetype: 'python',
+                 \   path: 'pylsp',
+                 \   args: []
+                 \ }])
