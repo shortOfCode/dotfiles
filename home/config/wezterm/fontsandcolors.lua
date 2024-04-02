@@ -11,7 +11,7 @@ function module.apply(config)
     }
 
     config.font = wezterm.font {
-        family = 'Fira Code',
+        family = 'Noto Sans Mono',
         weight = 'Regular'
     }
 
