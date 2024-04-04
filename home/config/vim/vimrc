@@ -69,20 +69,35 @@ nmap <Right> <Nop>
 nmap + <Nop>
 nmap - <Nop>
 
-# Motion remaps
+# Move the cursor around in insert mode. (for now)
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
+# Split navigation
 nnoremap <C-h> <C-w><Left>
 nnoremap <C-j> <C-w><Down>
 nnoremap <C-k> <C-w><Up>
 nnoremap <C-l> <C-w><Right>
+nnoremap <leader>- :res<CR>
+nnoremap <leader>= <C-w>=
 
+# Page up and down
 nnoremap <S-J> <PageDown>
 nnoremap <S-K> <PageUp>
 
+# Splits
+nnoremap <leader>/ <C-w>s
+nnoremap <leader>\ <C-w>v
+
+# Move splits around
+nnoremap <leader><Right> <C-w>L
+nnoremap <leader><Left> <C-w>H
+nnoremap <leader><Down> <C-w>J
+nnoremap <leader><Up> <C-w>K
+
+# Tab through lsp suggestions
 inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
 inoremap <expr> <S-tab> pumvisible() ? '<c-p>' : '<S-tab>'
 
