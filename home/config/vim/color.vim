@@ -9,3 +9,7 @@ set fillchars+=vert:.
 # Pmenu colors
 highlight Pmenu ctermfg=151 ctermbg=239
 highlight PmenuSel ctermfg=151 ctermbg=237
+
+g:lightline = {
+      \ 'colorscheme': 'Tomorrow_Night',
+      \ }

@@ -1,23 +1,10 @@
 vim9script
 
+import "~/.config/vim/pack.vim"
 import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
 
-# -vim-lightline
-packadd lightline.vim
-g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
-      \ }
-
-# -vim-accents
-packadd vim-accent
-
-# -fugitive
-packadd fugitive
-
-# -vim-gitgutter
-packadd vim-gitgutter
 
 # Interface stuff
 set encoding=UTF-8
