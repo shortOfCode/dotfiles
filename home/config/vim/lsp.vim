@@ -2,7 +2,6 @@ vim9script
 
 # -yegappan/lsp
 # :h fold-commands for keybinding
-packadd lsp
 
 g:LspAddServer([{name: 'rustanalyzer',
                  \   filetype: ['rust'],

@@ -1,8 +1,6 @@
 vim9script
 
 # -fzf
-packadd fzf
-packadd fzf.vim
 
 # fzf mappings
 nmap <leader>h :Help<CR>
