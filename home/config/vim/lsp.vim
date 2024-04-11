@@ -49,3 +49,11 @@ g:LspAddServer([{name: 'pylsp',
                  \   path: 'pylsp',
                  \   args: []
                  \ }])
+
+# Tab through lsp suggestions
+inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
+inoremap <expr> <S-tab> pumvisible() ? '<c-p>' : '<S-tab>'
+
+nnoremap <leader>d :LspDiag next<CR>
+nnoremap <leader>D :LspDiag prev<CR>
+
