@@ -5,15 +5,8 @@ local module = {}
 
 function module.apply(config)
   config.disable_default_key_bindings = true
+
   config.keys = {
---    { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
---    { key = 'PageUp', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(-1) },
---    { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
---    { key = 'PageDown', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(1) },
---    { key = 'M', mods = 'CTRL', action = act.Hide },
---    { key = 'M', mods = 'SHIFT|CTRL', action = act.Hide },
---    { key = 'X', mods = 'CTRL', action = act.ActivateCopyMode },
---    { key = 'X', mods = 'SHIFT|CTRL', action = act.ActivateCopyMode },
     { key = 'x', mods = 'ALT|CTRL', action = act.ActivateCopyMode },
     { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
     { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
@@ -46,6 +39,14 @@ function module.apply(config)
     { key = 'Insert', mods = 'CTRL', action = act.CopyTo 'PrimarySelection' },
     { key = 'Copy', mods = 'NONE', action = act.CopyTo 'Clipboard' },
     { key = 'Paste', mods = 'NONE', action = act.PasteFrom 'Clipboard' },
+--    { key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
+--    { key = 'PageUp', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(-1) },
+--    { key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
+--    { key = 'PageDown', mods = 'SHIFT|CTRL', action = act.MoveTabRelative(1) },
+--    { key = 'M', mods = 'CTRL', action = act.Hide },
+--    { key = 'M', mods = 'SHIFT|CTRL', action = act.Hide },
+--    { key = 'X', mods = 'CTRL', action = act.ActivateCopyMode },
+--    { key = 'X', mods = 'SHIFT|CTRL', action = act.ActivateCopyMode },
 --    { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
 --    { key = '!', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
 --    { key = '1', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
