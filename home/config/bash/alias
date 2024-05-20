@@ -2,6 +2,9 @@
 
 # some aliases
 alias ls='LC_COLLATE=C ls -F --group-directories-first --color=auto'
+alias ll='ls -l'
+alias la='ls -la'
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -10,6 +13,8 @@ alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
+
+alias cdu='cd ..'
 
 alias tmux="tmux -2 -f $HOME/.config/tmux/tmux.conf"
 

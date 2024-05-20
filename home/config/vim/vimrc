@@ -1,7 +1,7 @@
 vim9script
 
 # TODO
-# - LSP keybinds
+# - LSP keybinds !!MAPPED TAB TO BUFFERS ALSO!!
 # - Git keybinds
 # - Something for comments
 # - Remap CapsLock to ESC
@@ -42,6 +42,7 @@ set autoindent
 set smartindent
 set nowrap
 set backspace=indent,eol,start
+filetype plugin indent on
 
 # Other files
 set suffixesadd=.js
@@ -63,11 +64,16 @@ nmap <Right> <Nop>
 nmap + <Nop>
 nmap - <Nop>
 
-# Typing
+# Motions
+
+nnoremap K {
+nnoremap J }
+nnoremap H ^
+nnoremap L $
 
 ## Move the cursor around in insert mode. (for now)
-inoremap <C-j> <ESC><S-^>i
-inoremap <C-k> <ESC><S-$>i<Right>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 ## Close then type
 inoremap <> <><Left>
@@ -77,6 +83,9 @@ inoremap [] []<Left>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
+
+inoremap <leader>{ {<CR>}<Esc>ko<Tab>
+inoremap <leader><CR> <CR><Esc>ko
 
 # Windows/Splits
 
@@ -100,14 +109,18 @@ nnoremap <leader><Up> <C-w>K
 
 # Buffers
 
-## Page up and down
-nnoremap <S-J> <PageDown>
-nnoremap <S-K> <PageUp>
-
 ## Switching buffers
 
 nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprev<CR>
+nnoremap <leader>bd :b#<bar>:bd#<CR>
 
 nnoremap <leader><space> :noh<CR>
+
+# Emmet
+
+g:user_emmet_expandabbr_key = '<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+# g:user_emmet_leader_key = '<leader>'
+# inoremap , <C-y>
 

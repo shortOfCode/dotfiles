@@ -32,3 +32,10 @@ packadd fugitive
 
 #  https://github.com/airblade/vim-gitgutter.git
 packadd vim-gitgutter
+
+#  https://tpope.io/vim/commentary.git
+packadd commentary
+
+#  https://github.com/mattn/emmet-vim.git
+packadd emmet-vim
+

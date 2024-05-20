@@ -34,11 +34,11 @@ g:LspAddServer([{name: 'bashls',
                  \   path: 'bash-language-server',
                  \   args: ['start']
                  \ }])
-g:LspAddServer([{name: 'emmet',
-                 \   filetype: 'html',
-                 \   path: 'emmet-language-server',
-                 \   args: ['--stdio'],
-                 \ }])
+# g:LspAddServer([{name: 'emmet',
+#                  \   filetype: 'html',
+#                  \   path: 'emmet-language-server',
+#                  \   args: ['--stdio'],
+#                  \ }])
 g:LspAddServer([{name: 'tsserver',
                  \   filetype: ['javascript', 'typescript'],
                  \   path: 'typescript-language-server',
