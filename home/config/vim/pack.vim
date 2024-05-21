@@ -1,41 +1,37 @@
 vim9script
 
-#packloadall
+var plugDir = $HOME .. '/.vim/pack/plugins/start/'
 
-# I could put all my desired plugins in the `start` folder and run
-# `packloadall` above, but I'd forget what I put in there.  This is
-# especially an issue since I will use vim on more than 1 machine.
-# Leaving my plugins on the `opt` folder and adding them manually
-# as below means I can keep my config in a repo and see what I need
-# plainly.  
-#
-# Why not use a plugin manager of some sort? I'll probably get there
-# eventually.  I got this working.  It is stable.
+var plugs = {
+    'fzf': 'https://github.com/junegunn/fzf.git',
+    'fzf.vim': 'https://github.com/junegunn/fzf.vim.git',
+    'lsp': 'https://github.com/yegappan/lsp.git',
+    'lightline.vim': 'https://github.com/itchyny/lightline.vim.git',
+    'vim-accent': 'https://github.com/airblade/vim-accent.git',
+    'fugitive': 'https://tpope.io/vim/fugitive.git',
+    'vim-gitgutter': 'https://github.com/airblade/vim-gitgutter.git',
+    'commentary': 'https://tpope.io/vim/commentary.git',
+    'emmet-vim': 'https://github.com/mattn/emmet-vim.git'
+}
 
-# https://github.com/junegunn/fzf.git
-packadd fzf
+def ClonePlug(plug: string): number
+    echo  'Cloning ' .. plugs[plug]
+    system('git clone ' .. plugs[plug] .. ' ' .. $HOME .. '/.vim/pack/plugins/start/' .. plug)
+    return 1
+enddef
 
-#  https://github.com/junegunn/fzf.vim.git
-packadd fzf.vim
+def CheckPlug(plug: string): number
+    if isdirectory($HOME .. '/.vim/pack/plugins/start/' .. plug)
+	return 1
+    else
+        return ClonePlug(plug)
+    endif
+enddef
 
-#  https://github.com/yegappan/lsp.git
-packadd lsp
+for plug in keys(plugs)
+    #echo plug .. ': ' .. plugs[plug]
+    CheckPlug(plug)
+endfor
 
-#  https://github.com/itchyny/lightline.vim.git
-packadd lightline.vim
-
-#  https://github.com/airblade/vim-accent.git
-packadd vim-accent
-
-#  https://tpope.io/vim/fugitive.git
-packadd fugitive
-
-#  https://github.com/airblade/vim-gitgutter.git
-packadd vim-gitgutter
-
-#  https://tpope.io/vim/commentary.git
-packadd commentary
-
-#  https://github.com/mattn/emmet-vim.git
-packadd emmet-vim
+packloadall
 
