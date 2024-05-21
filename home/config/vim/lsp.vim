@@ -5,7 +5,7 @@ vim9script
 
 g:LspAddServer([{name: 'rustanalyzer',
                  \   filetype: ['rust'],
-                 \   path: '/home/matthew/.cargo/bin/rust-analyzer',
+                 \   path: $HOME .. '/.cargo/bin/rust-analyzer',
                  \   args: [],
                  \   syncInit: v:true,
                  \   initializationOptions: {
