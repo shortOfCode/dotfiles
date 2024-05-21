@@ -17,4 +17,4 @@ symlink ./home/config/vim/vimrc     $HOME/.vimrc
 symlink ./home/config/bash/bashrc   $HOME/.bashrc
 symlink ./home/config/bash/profile  $HOME/.profile
 
-symlink ./home/local/bin            $HOME/.local/bin
+# symlink ./home/local/bin            $HOME/.local/bin
