@@ -10,6 +10,7 @@ esac
 
 . $HOME/.config/bash/alias
 . $HOME/.config/bash/env
+. $HOME/.config/bash/prompt
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -28,7 +29,6 @@ eval "$(dircolors -b)"
 
 . /etc/bash_completion
 [ -f /usr/share/bash-completion/completions/pass-otp ] && source /usr/share/bash-completion/completions/pass-otp
-. $HOME/.config/bash/prompt
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
