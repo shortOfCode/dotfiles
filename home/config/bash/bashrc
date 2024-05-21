@@ -10,7 +10,6 @@ esac
 
 . $HOME/.config/bash/alias
 . $HOME/.config/bash/env
-. $HOME/.config/bash/prompt
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -27,20 +26,9 @@ shopt -s checkwinsize
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 eval "$(dircolors -b)"
 
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-# if ! shopt -oq posix; then
-#   if [ -f /usr/share/bash-completion/bash_completion ]; then
-#     . /usr/share/bash-completion/bash_completion
-#   elif [ -f /etc/bash_completion ]; then
-#     . /etc/bash_completion
-#   fi
-# fi
-
 . /etc/bash_completion
 [ -f /usr/share/bash-completion/completions/pass-otp ] && source /usr/share/bash-completion/completions/pass-otp
+. $HOME/.config/bash/prompt
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
