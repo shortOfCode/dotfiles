@@ -8,10 +8,6 @@ case $- in
       *) return;;
 esac
 
-. $HOME/.config/bash/alias
-. $HOME/.config/bash/env
-. $HOME/.config/bash/prompt
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 # check the window size after each command and, if necessary,
@@ -28,13 +24,10 @@ shopt -s checkwinsize
 eval "$(dircolors -b)"
 
 . /etc/bash_completion
-[ -f /usr/share/bash-completion/completions/pass-otp ] && source /usr/share/bash-completion/completions/pass-otp
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# opam configuration
-test -r /home/matthew/.opam/opam-init/init.sh && . /home/matthew/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
+. $HOME/.config/bash/alias
+. $HOME/.config/bash/env
+. $HOME/.config/bash/prompt
 
 scent
