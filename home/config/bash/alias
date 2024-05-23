@@ -13,6 +13,9 @@ alias gs='git status'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
+alias gj='git pull'
+alias gf='git fetch'
+alias gd='git diff'
 
 alias cdu='cd ..'
 
