@@ -8,10 +8,9 @@ vim9script
 # - Select-mode?
 
 import "~/.config/vim/pack.vim"
-import "~/.config/vim/lsp.vim"
+# import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
-
 
 # Interface stuff
 set encoding=UTF-8
