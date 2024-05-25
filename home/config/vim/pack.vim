@@ -7,7 +7,7 @@ var packs = {
     'fzf.vim': 'https://github.com/junegunn/fzf.vim.git',
     'lightline.vim': 'https://github.com/itchyny/lightline.vim.git',
     'vim-accent': 'https://github.com/airblade/vim-accent.git',
-    'ale': 'https://github.com/dense-analysis/ale.git',
+    'lsp': 'https://github.com/yegappan/lsp',
     'fugitive': 'https://tpope.io/vim/fugitive.git',
     'vim-gitgutter': 'https://github.com/airblade/vim-gitgutter.git',
     'commentary': 'https://tpope.io/vim/commentary.git',
