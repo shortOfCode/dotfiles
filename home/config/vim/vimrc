@@ -64,7 +64,7 @@ nmap <Right> <Nop>
 nmap + <Nop>
 nmap - <Nop>
 
-# Motions
+# Motions And Typing
 
 nnoremap K {
 nnoremap J }
@@ -115,12 +115,4 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <leader>bd :b#<bar>:bd#<CR>
 
 nnoremap <leader><space> :noh<CR>
-
-# Emmet
-
-g:user_emmet_expandabbr_key = '<Tab>'
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
-# g:user_emmet_leader_key = '<leader>'
-# inoremap , <C-y>
 
