@@ -12,3 +12,5 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>l :Lines<CR>
 nmap <leader>M :Marks<CR>
 nmap <leader>H :History<CR>
+nmap <leader>t :Color<CR>
+
