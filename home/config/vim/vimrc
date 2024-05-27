@@ -1,10 +1,10 @@
 vim9script
 
+g:mapleader = ','
+
 # TODO
 # - LSP keybinds !!MAPPED TAB TO BUFFERS ALSO!!
 # - Git keybinds
-# - Something for comments
-# - Remap CapsLock to ESC
 # - Select-mode?
 
 import "~/.config/vim/pack.vim"
@@ -63,6 +63,12 @@ nmap <Right> <Nop>
 # Available for remap
 nmap + <Nop>
 nmap - <Nop>
+nnoremap gs <Nop>
+nnoremap go <Nop>
+nnoremap gb <Nop>
+nnoremap gl <Nop>
+nnoremap gx <Nop>
+nnoremap zq <Nop>
 
 # Motions And Typing
 

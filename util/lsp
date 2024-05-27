@@ -1,0 +1,13 @@
+#!/bin/bash
+
+##
+# Install several language servers that are not provided with language tools
+# ( to the best of my knowledge )
+#
+##
+
+PREFIX=$HOME/.local
+
+npm --prefix $PREFIX install -g \
+    bash-language-server
+

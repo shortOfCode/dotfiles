@@ -1,6 +1,6 @@
 --local wezterm = require 'wezterm'
 local fontsandcolors = require 'fontsandcolors'
-local keyboard = require 'keyboard' 
+local keyboard = require 'keyboard'
 
 local config = {}
 
