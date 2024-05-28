@@ -10,7 +10,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias gs='git status'
-alias ga='git add .'
+alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push'
 alias gj='git pull'
