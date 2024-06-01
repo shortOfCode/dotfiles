@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# This is mostly ChatGPT generated.
+
 import argparse
 from PIL import Image, ImageDraw, ImageFont, ImageSequence
 from pathlib import Path
