@@ -11,6 +11,7 @@ import "~/.config/vim/pack.vim"
 import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
+import "~/.config/vim/pops.vim"
 
 # Interface stuff
 set encoding=UTF-8
@@ -64,7 +65,7 @@ nmap <Right> <Nop>
 nmap + <Nop>
 nmap - <Nop>
 nnoremap gs <Nop>
-nnoremap go <Nop>
+# nnoremap go <Nop>
 nnoremap gb <Nop>
 nnoremap gl <Nop>
 nnoremap gx <Nop>
@@ -116,7 +117,7 @@ nnoremap <leader><Up> <C-w>K
 # Buffers
 
 ## Switching buffers
-
+nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <leader>bd :b#<bar>:bd#<CR>
 

@@ -1,6 +1,94 @@
 *extra-help.txt*  Some extra notes that I think will help
 
-Author:  Matthew Carlino <http://no.pe/>
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
+License: Same terms as Vim itself (see |license|)
+
+*extra-keymaps*
+
+
+*extra-help.txt*  Some extra notes that I think will help
+
+Author:  Matthew Carlino
 License: Same terms as Vim itself (see |license|)
 
 *extra-keymaps*
