@@ -1,0 +1,3 @@
+#!/bin/bash
+
+surf -g -T -x c3li.ccbchurch.com

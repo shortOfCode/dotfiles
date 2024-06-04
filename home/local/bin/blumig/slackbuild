@@ -1,0 +1,271 @@
+#!/bin/bash
+
+#-------------------------------------------
+#
+# This is intended to roughly mimic slackpkg with the following differences.
+#
+# - It is assumed that there is a local copy of 
+#   ftp.slackbuilds.org/pub/slackbuilds/15.0 located at 
+#   /var/lib/slackbuilds64-15.0.
+# - Thus making /var/lib/slackbuild both the $WORKDIR and $TMPDIR. (you will 
+#   not see $TMPDIR in this script)
+# - Comparisons will be performed between the local copy and $WORKDIR
+#
+#-------------------------------------------
+
+GREEN='\033[1;32m'
+RED='\033[1;31m'
+YELLOW='\033[1;33m'
+NORM='\033[0m'
+
+DOWNLOADER="wget --passive-ftp -O"
+
+SOURCE="ftp://ftp.slackbuilds.org/pub/slackbuilds/15.0/"
+LOCAL=/var/lib/slackbuilds64-15.0
+WORKDIR=/var/lib/slackbuild
+
+notice() {
+    echo -e "${GREEN}\t$1${NORM}"
+}
+
+alert() {
+    echo -e "${RED}\n\t$1$\n{NORM}"
+}
+
+warn() {
+    echo -e "${YELLOW}\t$1${NORM}"
+}
+
+cleanup() {
+    local retval=${EXIT_CODE:-0}
+
+    rm -f /var/lock/slackbuild.$$
+
+    exit ${retval}
+}
+
+system_setup() {
+    mkdir -p "${WORKDIR}"
+}
+
+system_checkup() {
+    
+    # Check lock
+    #
+    if [ "$(ls /var/lock/slackbuild.* 2>/dev/null)" ]
+    then
+        alert "Another instance of slackbuild is running. If this is not correct, you can\n\
+\tremove /var/lock/slackbuild.* files and run slackbuild again."
+        cleanup
+    else
+        ls /var/lock/slackpkg.* &>/dev/null || touch /var/lock/slackbuild.$$
+    fi
+
+    # Check if the SlackBuilds GPG key is found in the system
+    #
+    SBKEY="SlackBuilds.org Development Team <slackbuilds-devel@slackbuilds.org>"
+    GPGFIRSTTIME="$(gpg --list-keys \"$SBKEY\" 2>/dev/null | grep -c "$SBKEY")"
+
+}
+
+get_gpg_key() {
+
+    if ping -c 1 slackbuilds.org &>/dev/null
+    then
+        notice "Getting key from https://slackbuilds.org/GPG-KEY"
+        $DOWNLOADER $WORKDIR/gpgkey https://slackbuilds.org/GPG-KEY &>/dev/null
+    else
+        alert "slackbuild is unable to get the Slackbuilds GPG key from slackbuilds.org"
+    fi
+}
+
+import_gpg_key() {
+    mkdir -p ~/.gnupg
+    gpg --yes --batch --delete-key "$SBKEY" &>/dev/null
+    gpg --import $WORKDIR/gpgkey && \
+    notice "Slackbuilds GPG key added"
+    
+}
+
+checkgpg() {
+    gpg --verify ${1}.asc ${1} 2>/dev/null && echo "1" || echo "0"
+}
+
+checkmd5() {
+    local MD5ORIGINAL
+    local MD5DOWNLOAD
+
+    if [ "$MD5ORIGINAL" = "$MD5DOWNLOAD"  ]
+    then
+        echo 1
+    else
+        echo 0
+    fi 
+}
+
+checkchangelog() {
+    
+    # First time use
+    if ! [ -e ${WORKDIR}/CHECKSUMS.md5.asc ]
+    then
+        touch ${WORKDIR}/CHECKSUMS.md5.asc
+    fi
+
+    # Download latest CHECKSUM signature
+    #notice "Downloading CHECKSUM signature..."
+    #$DOWNLOADER ${WORKDIR}/CHECKSUMS.md5.asc ${SOURCE}CHECKSUMS.md5.asc &>/dev/null
+
+    #if ! grep -q "PGP" ${WORKDIR}/CHECKSUMS.md5.asc
+    #then
+    #    alert "Error downloading from ${SOURCE}."
+    #    cleanup
+    #fi
+
+    # There is no need to download from a remote source when $LOCAL syncs with the remote source.
+    # We just need to diff with $LOCAL
+
+    if diff --brief ${WORKDIR}/CHECKSUMS.md5.asc ${LOCAL}/CHECKSUMS.md5.asc &>/dev/null 
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+updatefilelists() {
+
+    if checkchangelog
+    then
+        notice "No changes in ChangeLog.txt between your last update and now."
+        cleanup
+    fi
+
+    # With the local mirror approach, no downloading is needed, just a copy
+    # from $LOCAL to $WORKDIR
+
+    # Something changed, download ChangeLog.txt
+#    notice "Downloading ChangeLog.txt..."
+#    $DOWNLOADER ${WORKDIR}/ChangeLog.txt ${LOCAL}ChangeLog.txt &>/dev/null
+#
+#    if ! grep -q "[a-z]" ${WORKDIR}/ChangeLog.txt
+#    then
+#        alert "Error downloading from $SOURCE."
+#        cleanup
+#    fi
+#
+#    # Download CHECKSUMS
+#    notice "Downloading CHECKSUMS.md5..."
+#    $DOWNLOADER ${WORKDIR}/CHECKSUMS.md5 ${LOCAL}CHECKSUMS.md5 &>/dev/null
+#
+#    if ! [ -e "${WORKDIR}/CHECKSUMS.md5" ]
+#    then
+#        alert "Error downloading from $SOURCE."
+#        cleanup
+#    else
+#        notice "Verifing CHECKSUM signature and MD5 hashes"
+#        ISOK=$(checkgpg ${WORKDIR}/CHECKSUMS.md5)
+#        if [ "$ISOK" = "0" ]
+#        then
+#            alert "CHECKSUM verification failed"
+#            cleanup
+#        fi
+#    fi
+
+    # This part, maybe, doesn't belong here.  No code above changes $LOCAL.  This
+    # makes more sense in the rsync cron job.  slackpkg checks just the ChangeLog.txt md5 hash.
+    TPWD=$(pwd)
+    cd $LOCAL
+    BIGMD5CHK=$(tail +14 ./CHECKSUMS.md5 | md5sum -c --quiet -) # Does this actually work?
+    cd $TWPD
+    if [ -n "$BIGMD5CHK" ]
+    then
+        alert "The following failed the MD5 check:\n\n$BIGMD5CHK"
+        cleanup
+    else
+        notice "Big MD5 check passed"
+    fi
+
+    cleanup
+}
+
+usage() {
+    echo -e "\
+slackbuild - version 1\n\
+\nUsage:\n\
+\tslackbuild update [gpg]
+\tslackbuild check-updates\n
+"
+    cleanup
+}
+
+if [ $# -eq 0 ]
+then
+    usage
+fi
+
+while [ -n "$1" ]
+do
+    case $1 in
+        update)
+            CMD=$1
+            shift
+            if [ "$1" = "gpg" ]
+            then
+                UPARG=$1
+                shift
+            fi
+        ;;
+        check-updates)
+            CMD=$1
+            shift
+            if [ -n "$1" ]
+            then
+                warn "$CMD: Ignoring extra arguments: $@" >&2 >&1
+                shift $#
+            fi
+        ;;
+        *)
+            echo -e "\n$1: Unknown option.\n"
+            usage
+        ;;
+    esac
+done
+
+#------------------------------------------
+# System Setup
+system_setup
+
+#------------------------------------------
+# System Checks
+system_checkup
+
+#------------------------------------------
+# Do Commands
+case "$CMD" in
+    update)
+        if [ "$UPARG" = "gpg" ] || [ "$GPGFIRSTTIME" = "0" ]
+        then
+            get_gpg_key && import_gpg_key
+
+            if [ "$UPARG" = "gpg" ]
+            then
+                cleanup
+            fi 
+        fi
+        updatefilelists
+    ;;
+    check-updates)
+        if checkchangelog 1>/dev/null 2>/dev/null
+        then
+            notice "Slackbuild: No updated packages since last check."
+        else
+            notice "Slackbuild: Updated packages are available." >&2
+            EXIT_CODE=100            
+        fi
+    ;;
+    *)
+        usage
+    ;;
+esac
+
+cleanup

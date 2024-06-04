@@ -1,0 +1,71 @@
+#!/bin/bash
+
+SPICY_FILE=/home/matthew/super.spicy
+CLIP_TIMEOUT=60
+TERM="$2"
+
+pwd_add() {
+    echo "Site:"
+    read site
+    echo "Username:"
+    read username
+    echo "Password:"
+    read -rs password
+    echo "Extra:"
+    read extra
+
+    encrypted=$(echo "$password" | gpg --encrypt --recipient matthew@blu.shortofcode.net --armor)
+    encoded=$(echo "$encrypted" | base64 --wrap 0)
+    cleaned=$(echo "$extra" | tr "|" _)
+
+    echo "$site|$username|$cleaned|$encoded" >> $SPICY_FILE
+}
+
+pwd_search() {
+    cat $SPICY_FILE | grep "$TERM" | cut -d"|" -f1,2,3
+}
+
+pwd_list() {
+    cat $SPICY_FILE | awk -F '|' '{printf "%-30s%-30s%-30s\n", $1,$2,$3}'
+}
+
+pwd_use() {
+    echo "Copying password for $(pwd_search) to clipboard."
+    cat $SPICY_FILE | grep "$TERM" | cut -d"|" -f4- | base64 -d | gpg -q --decrypt | xclip -selection c
+    bash -c 'sleep 60 && echo "$(dd if=/dev/urandom bs=3 count=1)" | xclip -selection c > /dev/null' > /dev/null & 
+}
+
+pwd_go() {
+    url="https://$(pwd_search | cut -d"|" -f1)"
+    xdg-open $url
+    pwd_use
+}
+
+case "$1" in
+    'add')
+        pwd_add
+        ;;
+    'search')
+        pwd_search
+        ;;
+    'list')
+        pwd_list
+        ;;
+    'use')
+        pwd_use
+        ;;
+    'go')
+        pwd_go
+        ;;
+     *)
+        echo "USAGE: spicy {add|search|list|use|go}"
+        ;;
+esac
+
+
+#if [ "$1" == "--peek" ]; then
+#    gpg -q --decrypt spicy.sig | gpg --decrypt | grep "$2" | cut -d"," -f3,6;
+#else
+#    gpg -q --decrypt spicy.sig | gpg --decrypt | grep -e "$1" | cut -d"," -f7 | xclip -selection c;
+#    bash -c 'sleep 60 && echo "$(dd if=/dev/urandom bs=3 count=1)" | xclip -selection c > /dev/null' > /dev/null & 
+#fi
