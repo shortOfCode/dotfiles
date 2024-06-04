@@ -1,96 +1,39 @@
 *extra-help.txt*  Some extra notes that I think will help
 
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
+Built-in Stuff
 
-*extra-keymaps*
+A WORD is strictly a sequence of non blank characters
+W, E, B
 
+a, i - Outer/inner selection with Visual mode.
+    with w, W, e, E
+    also s, p, []{}bB for sentences, paragraphs, blocks
+    < > may be nice with markup
+    t is certainly nice for tags
+    "'` for quotes
 
-*extra-help.txt*  Some extra notes that I think will help
+Not just visual mode
+"dl"	delete character (alias: "x")		|dl|
+"diw"	delete inner word			*diw*
+"daw"	delete a word				*daw*
+"diW"	delete inner WORD (see |WORD|)		*diW*
+"daW"	delete a WORD (see |WORD|)		*daW*
+"dgn"   delete the next search pattern match    *dgn*
+"dd"	delete one line				|dd|
+"dis"	delete inner sentence			*dis*
+"das"	delete a sentence			*das*
+"dib"	delete inner '(' ')' block		*dib*
+"dab"	delete a '(' ')' block			*dab*
+"dip"	delete inner paragraph			*dip*
+"dap"	delete a paragraph			*dap*
+"diB"	delete inner '{' '}' block		*diB*
+"daB"	delete a '{' '}' block			*daB*
 
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
+% - Jump to a match
 
-*extra-keymaps*
+( ) - Sentences back/forward
+{ } - Paragraphs back/forward
 
+For later:
 
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
-*extra-help.txt*  Some extra notes that I think will help
-
-Author:  Matthew Carlino
-License: Same terms as Vim itself (see |license|)
-
-*extra-keymaps*
-
-
+`section`
