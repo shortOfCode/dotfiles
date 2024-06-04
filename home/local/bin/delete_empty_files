@@ -1,0 +1,1 @@
+find . -depth -empty -delete && ls -1 | wc -l

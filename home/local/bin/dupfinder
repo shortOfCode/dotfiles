@@ -1,0 +1,29 @@
+#!/bin/bash
+# /filetank/*
+# /root/puffdrive
+
+shopt -s globstar
+
+#for f in /filetank/archive/* /filetank/archive/**/*
+for f in /filetank/**/* /mnt/hd/thevgroot/root/puffdrive/* /mnt/hd/thevgroot/root/puffdrive/**/*
+do
+    if [ -f "$f" ] && [[ ! $f/ = /filetank/repos/* ]]
+    then
+        echo "Computing hash for $f"
+        SUM=$(sha256sum "$f")
+#        echo "$SUM"
+        HASHFILENAME=$(echo "$SUM" | cut -d' ' -f1)
+        SUMMEDFILE=$(echo "$SUM" | cut -d' ' -f3-)
+    
+#        echo "Hash FIle: $HASHFILENAME"
+#        echo "Summed File: $SUMMEDFILE"
+        echo "$SUMMEDFILE" >> /mnt/hd/thevgroot/opt/hashes/$HASHFILENAME
+    fi
+
+
+#    HASHFILENAME=$(echo $SUM | cut -d' ' -f1)
+#    SUMMEDFILE=$(echo $SUM | cut -d' ' -f3)
+#
+#    echo "Hash FIle: $HASHFILENAME"
+#    echo "Summed File: $SUMMEDFILE"
+done
