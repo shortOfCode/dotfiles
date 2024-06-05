@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+bookmarks=$HOME/.config/surf/bookmarks
+selected_bm=$(cat $bookmarks | awk '{ print $1 }' | dmenu -b)
+
+if [ -n "$selected_bm" ]
+then
+    surf -g -T -x $(cat $bookmarks | egrep "^$selected_bm" | awk '{ print $2 }')
+fi

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# qutebrowser --target private-window c3college.instructure.com
-surf -g -T -x c3college.instructure.com

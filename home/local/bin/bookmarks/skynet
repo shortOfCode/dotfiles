@@ -1,3 +1,0 @@
-#!/bin/bash
-
-surf -g -T -x chat.openai.com

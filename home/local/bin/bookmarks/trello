@@ -1,4 +1,0 @@
-#!/bin/bash
-
-#qutebrowser --target private-window https://trello.com/login
-surf -g -T -x trello.com
