@@ -13,6 +13,8 @@ vim9script
 # TODO: Wrtie cheat sheet as a vim help file.
 
 const extraHelpTxt: string = $HOME .. "/workspace/dotfiles/home/config/vim/extra-help.txt"
+const extraHelpCmd: list<string> = ["cat", extraHelpTxt]
+const treeCmd: list<string> = ["tree"]
 var winid: number
 
 var term_opts = {
@@ -21,8 +23,8 @@ var term_opts = {
 }
 
 
-def PopThis(): number
-    var bufnr = term_start(["cat", extraHelpTxt], term_opts)
+def PopThis(cmd: list<string>): number
+    var bufnr = term_start(cmd, term_opts)
     var width = float2nr(&columns * 0.8)
     var height = float2nr(&lines * 0.8)
     var popOpts = {
@@ -49,14 +51,16 @@ def ClosePop(): number
     return 1
 enddef
 
-def g:TogglePop(): number
+def g:TogglePop(cmd: list<string>): number
     if winid == 0
-        return PopThis()
+        return PopThis(cmd)
     else
         return ClosePop()
     endif
 enddef
 
-command -nargs=0 PopExtraHelp g:TogglePop()
+command -nargs=0 PopExtraHelp g:TogglePop(extraHelpCmd)
+command -nargs=0 PopTree g:TogglePop(treeCmd)
 
 nnoremap <leader>c :PopExtraHelp<CR>
+nnoremap <leader>e :PopTree<CR>
