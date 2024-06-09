@@ -1,0 +1,6 @@
+#!/bin/bash
+
+. /etc/bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+test -r $HOME/.opam/opam-init/complete.sh && . $HOME/.opam/opam-init/complete.sh > /dev/null 2> /dev/null || true
+

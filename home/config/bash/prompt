@@ -1,3 +1,4 @@
+#!/bin/bash
 
 bold='\[$(tput bold)\]'
 rset='\[$(tput sgr0)\]'
