@@ -34,11 +34,21 @@ g:LspAddServer([{name: 'bashls',
                  \   path: 'bash-language-server',
                  \   args: ['start']
                  \ }])
-# g:LspAddServer([{name: 'tsserver',
-#                  \   filetype: ['javascript', 'typescript'],
-#                  \   path: 'typescript-language-server',
-#                  \   args: ['--stdio']
-#                  \ }])
+g:LspAddServer([{name: 'vscode-html-server',
+                 \   filetype: 'html',
+                 \   path: 'vscode-html-language-server',
+                 \   args: ['--stdio'],
+                 \ }])
+g:LspAddServer([{name: 'vscode-css-server',
+                 \   filetype: 'css',
+                 \   path: 'vscode-css-language-server',
+                 \   args: ['--stdio'],
+                 \ }])
+g:LspAddServer([{name: 'tsserver',
+                 \   filetype: ['javascript', 'typescript'],
+                 \   path: 'typescript-language-server',
+                 \   args: ['--stdio']
+                 \ }])
 # g:LspAddServer([{name: 'pylsp',
 #                  \   filetype: 'python',
 #                  \   path: 'pylsp',

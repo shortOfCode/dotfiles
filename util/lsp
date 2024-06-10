@@ -9,5 +9,6 @@
 PREFIX=$HOME/.local
 
 npm --prefix $PREFIX install -g \
-    bash-language-server
-
+    bash-language-server \
+    typescript-language-server \
+    vscode-langservers-extracted
