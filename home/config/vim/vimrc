@@ -3,15 +3,16 @@ vim9script
 g:mapleader = ','
 
 # TODO
-# - LSP keybinds !!MAPPED TAB TO BUFFERS ALSO!!
 # - Git keybinds
 # - Select-mode?
+
+import "~/.config/vim/pops.vim"
+import "~/.config/vim/html.vim"
 
 import "~/.config/vim/pack.vim"
 import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
-import "~/.config/vim/pops.vim"
 
 # Interface stuff
 set encoding=UTF-8
@@ -55,7 +56,7 @@ set directory=~/tmp
 set backupdir=~/tmp
 set undodir=~/tmp
 
-# Noops
+# Nops
 nmap <Up> <Nop>
 nmap <Down> <Nop>
 nmap <Left> <Nop>
@@ -70,6 +71,8 @@ nnoremap gb <Nop>
 nnoremap gl <Nop>
 nnoremap gx <Nop>
 nnoremap zq <Nop>
+# inoremap <C-J> <Nop>
+# inoremap <C-I> <Nop>
 
 # Motions And Typing
 
@@ -85,7 +88,7 @@ inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
 ## Close then type
-inoremap <> <><Left>
+# inoremap <> <><Left> # while tinkering with html
 inoremap () ()<Left>
 inoremap {} {}<Left>
 inoremap [] []<Left>
@@ -93,8 +96,9 @@ inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
 
-inoremap <leader>{ {<CR>}<Esc>ko<Tab>
-inoremap <leader><CR> <CR><Esc>ko
+## Make space in between surrounding things
+inoremap <leader>{ {<CR>}<Esc>ko<C-f>
+inoremap <leader><CR> <CR><Esc>ko<C-f>
 
 # Windows/Splits
 
@@ -103,25 +107,30 @@ nnoremap <C-h> <C-w><Left>
 nnoremap <C-j> <C-w><Down>
 nnoremap <C-k> <C-w><Up>
 nnoremap <C-l> <C-w><Right>
+
+## Window Manipulation
+nnoremap <leader>/ <C-w>s
+nnoremap <leader>\ <C-w>v
 nnoremap <leader>- :res<CR>
 nnoremap <leader>= <C-w>=
 
-## Split Making
-nnoremap <leader>/ <C-w>s
-nnoremap <leader>\ <C-w>v
-
-## Move windows around
-nnoremap <leader><Right> <C-w>L
-nnoremap <leader><Left> <C-w>H
-nnoremap <leader><Down> <C-w>J
-nnoremap <leader><Up> <C-w>K
+nnoremap <C-Right> <C-w>L
+nnoremap <C-Left> <C-w>H
+nnoremap <C-Down> <C-w>J
+nnoremap <C-Up> <C-w>K
+nnoremap <S-Left> <C-w><
+nnoremap <S-Right> <C-w>>
+nnoremap <S-Up> <C-w>+
+nnoremap <S-Down> <C-w>-
 
 # Buffers
 
 ## Switching buffers
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>bd :b#<bar>:bd#<CR>
 
 nnoremap <leader><space> :noh<CR>
 
+nnoremap <F8> :source %<CR>

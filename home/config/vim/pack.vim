@@ -10,7 +10,8 @@ var packs = {
     'lsp': 'https://github.com/yegappan/lsp',
     'fugitive': 'https://tpope.io/vim/fugitive.git',
     'vim-gitgutter': 'https://github.com/airblade/vim-gitgutter.git',
-    'commentary': 'https://tpope.io/vim/commentary.git'
+    'commentary': 'https://tpope.io/vim/commentary.git',
+    'emmet-vim': 'https://github.com/mattn/emmet-vim.git'
 }
 
 def ClonePack(pack: string): number

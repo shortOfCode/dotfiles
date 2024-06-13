@@ -7,7 +7,7 @@ var lspServers = [
     {
         name: 'rustanalyzer',
         filetype: ['rust'],
-        path: $HOME .. '/.cargo/bin/rust-analyzer',
+        path: 'rust-analyzer',
         args: [],
         syncInit: v:true,
         initializationOptions: {
@@ -33,18 +33,18 @@ var lspServers = [
         path: 'bash-language-server',
         args: ['start']
     },
-    {
-        name: 'vscode-html-server',
-        filetype: 'html',
-        path: 'vscode-html-language-server',
-        args: ['--stdio']
-    },
-    {
-        name: 'vscode-css-server',
-        filetype: 'css',
-        path: 'vscode-css-language-server',
-        args: ['--stdio']
-    },
+    # {
+    #     name: 'vscode-html-server',
+    #     filetype: 'html',
+    #     path: 'vscode-html-language-server',
+    #     args: ['--stdio']
+    # },
+    # {
+    #     name: 'vscode-css-server',
+    #     filetype: 'css',
+    #     path: 'vscode-css-language-server',
+    #     args: ['--stdio']
+    # },
     {
         name: 'tsserver',
         filetype: ['javascript', 'typescript'],
@@ -59,6 +59,9 @@ var lspServers = [
     }
 ]
 g:LspAddServer(lspServers)
+# g:LspOptionsSet({"snippetSupport": v:true})
+
+# autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 # Tab through lsp suggestions
 inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
@@ -88,5 +91,4 @@ nnoremap <leader>la :LspCodeAction<CR>
 # :LspGotoDeclaration
 # :LspGotoImpl
 # :LspGotoTypeDef
-
 
