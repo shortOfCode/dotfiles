@@ -14,8 +14,9 @@ vim9script
 
 const extraHelpTxt: string = $HOME .. "/workspace/dotfiles/home/config/vim/extra-help.txt"
 const extraHelpCmd: list<string> = ["cat", extraHelpTxt]
-const treeCmd: list<string> = ["tree"]
+const treeCmd: list<string> = ["tree", "-I", "node_modules"]
 var winid: number
+var bufnr: number
 
 var term_opts = {
     "hidden": 1,
@@ -24,7 +25,7 @@ var term_opts = {
 
 
 def PopThis(cmd: list<string>): number
-    var bufnr = term_start(cmd, term_opts)
+    bufnr = term_start(cmd, term_opts)
     var width = float2nr(&columns * 0.8)
     var height = float2nr(&lines * 0.8)
     var popOpts = {

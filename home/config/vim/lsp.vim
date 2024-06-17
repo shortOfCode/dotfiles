@@ -33,18 +33,18 @@ var lspServers = [
         path: 'bash-language-server',
         args: ['start']
     },
-    # {
-    #     name: 'vscode-html-server',
-    #     filetype: 'html',
-    #     path: 'vscode-html-language-server',
-    #     args: ['--stdio']
-    # },
-    # {
-    #     name: 'vscode-css-server',
-    #     filetype: 'css',
-    #     path: 'vscode-css-language-server',
-    #     args: ['--stdio']
-    # },
+    {
+        name: 'vscode-html-server',
+        filetype: 'html',
+        path: 'vscode-html-language-server',
+        args: ['--stdio']
+    },
+    {
+        name: 'vscode-css-server',
+        filetype: 'css',
+        path: 'vscode-css-language-server',
+        args: ['--stdio']
+    },
     {
         name: 'tsserver',
         filetype: ['javascript', 'typescript'],

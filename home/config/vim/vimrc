@@ -107,6 +107,10 @@ nnoremap <C-h> <C-w><Left>
 nnoremap <C-j> <C-w><Down>
 nnoremap <C-k> <C-w><Up>
 nnoremap <C-l> <C-w><Right>
+tnoremap <C-h> <C-w><Left>
+tnoremap <C-j> <C-w><Down>
+tnoremap <C-k> <C-w><Up>
+tnoremap <C-l> <C-w><Right>
 
 ## Window Manipulation
 nnoremap <leader>/ <C-w>s
@@ -130,6 +134,8 @@ nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>bd :b#<bar>:bd#<CR>
+
+# call setbufvar(bufnr, 'buflisted', 0)  # Allows tab through?
 
 nnoremap <leader><space> :noh<CR>
 
