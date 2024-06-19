@@ -21,6 +21,13 @@ e/E     end of word/WORD                [[      section bck / next { bck
 b/B     words/WORDS backward            ][      section fwd / next } fwd
 ge/E    end of word/WORD backward       []      section bck / next } bck
 
+emmet
+
+,;      expand custom html      ,j      toggle self close tag
+,u      update tag              ,/      toggle comment
+v_,,    wrap with a tag         ,a      make anchor
+,n/N    next/prev edit point
+
 % - Jump to a match
 
 ( ) - Sentences back/forward
