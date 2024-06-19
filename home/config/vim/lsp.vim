@@ -34,6 +34,13 @@ var lspServers = [
         args: ['start']
     },
     {
+        name: 'emmet',
+        filetype: 'html',
+        path: 'emmet-language-server',
+        args: ['--stdio']
+
+    },
+    {
         name: 'vscode-html-server',
         filetype: 'html',
         path: 'vscode-html-language-server',
@@ -59,7 +66,7 @@ var lspServers = [
     }
 ]
 g:LspAddServer(lspServers)
-# g:LspOptionsSet({"snippetSupport": v:true})
+g:LspOptionsSet({"snippetSupport": v:true})
 
 # autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
