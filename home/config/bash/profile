@@ -26,8 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# set PATH so it includes flatpack bin if it exists
-if [ -d "/var/lib/flatpack/exports/bin" ]; then
-    PATH="/var/lib/flatpack/exports/bin:$PATH"
+# set PATH so it includes flatpak bin if it exists
+if [ -d "/var/lib/flatpak/exports/bin" ]; then
+    PATH="/var/lib/flatpak/exports/bin:$PATH"
 fi
 
