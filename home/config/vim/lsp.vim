@@ -61,7 +61,7 @@ var lspServers = [
     {
         name: 'pylsp',
         filetype: 'python',
-        path: 'pylsp',
+        path: 'pyls',
         args: []
     }
 ]
