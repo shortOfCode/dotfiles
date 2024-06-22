@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Run this script in any directory that contains executables that you would
+# like to symlink in $HOME/.local/bin
+#
+
+PREFIX=$HOME/.local
+
+symlink () {
+    while read -r target; do
+        ln -snvf "`pwd`/$target" "$PREFIX/bin/$(basename $target)"
+    done
+}
+
+findBins () {
+    find -P $1 -maxdepth 1 -type f -not -name "*.so" -executable -o -type l -not -name "*.so" -executable
+}
+
+findBins . | symlink
