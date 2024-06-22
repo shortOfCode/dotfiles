@@ -12,7 +12,7 @@ vim9script
 # TODO: `tree` output in a popup?
 # TODO: Wrtie cheat sheet as a vim help file.
 
-const extraHelpTxt: string = $HOME .. "/workspace/dotfiles/home/config/vim/extra-help.txt"
+const extraHelpTxt: string = $HOME .. "/.config/vim/vim.cheat"
 const extraHelpCmd: list<string> = ["cat", extraHelpTxt]
 const treeCmd: list<string> = ["tree", "-I", "node_modules"]
 var winid: number
