@@ -1,0 +1,267 @@
+Key docs, rewritten for practice, without remaps (defaults)
+
+NUM -> OP -> NUM -> MOTION
+
+NUM: Those two NUMs will multiply
+
+===motion.txt===
+
+==NORMAL MODE==
+
+OPERATORS
+------------------------|------------------------------------
+c   i   a   d   y       |   change/yank
+                        |
+g~  gu  gU              |   upper/lowercase
+                        |
+!   =                   |   filter (equalprg)
+                        |
+gq  gw                  |   txt format w/wout cursor move
+                        |
+>   <                   |   shift/indent
+                        |
+g@                      |   operatorfunc
+
+- Doubling an operator operates on a line
+
+MOTIONS/LEFT-RIGHT-UP-DOWN
+------------------------|-----------------------------------|
+h   <C-H>   <BS>        |   move left                       |
+l   <Space>             |   move right                      |
+j   <C-J>   <C-N>       |   move down, direct or eol        |
+k   <C-P>               |   move up, direct or eol          |
+-                       |   move down, first non blank      |
++   <C-M>               |   move up, first non blank        |
+_ (underscore)          |   move n-1 down                   |
+                        |                                   |
+0   ^   $   g_  g0  g^  |   start/end of line               |   g's move screenwise or on what is visible
+                        |                                   |
+gm  gM  gj  gk          |   half line / "display" line dn/up|
+                        |                                   |
+|   G   gg  %           |   move to column/line num/pct     |
+                        |                                   |
+f   t   F   T   ;   ,   |   move right/left to char repeat  |   lowercase is incl, uppercase is excl
+                        |                                   |
+
+MOTIONS-SELECTIONS/WORDS-words-text-objects
+------------------------|-----------------------------------|
+w   W   e   E           |   fwd to start/end of word/WORD   |
+                        |                                   |
+b   B   ge  gE          |   bkd to start/end of word/WORD   |
+                        |                                   |
+(   )   {   }           |   sentence and paragraph moves    |
+                        |                                   |
+]]  ][  [[  []          |   sections { } fwd/bkd            |
+                        |                                   |
+i   a                   |   inner/outer selection           |
+                        |                                   |
+s   p   b   B   "'`     |   sent/para/block/brace/qoute objs|
+                        |                                   |
+
+- WORDS are separated by whitespace, strictly
+- motions that move between lines affect lines
+- motions that within a line affect characters
+- inclusive motions direct operators to affect the start and end of the motion
+- exclusive motions direct operators to leave the start and end alone
+- the operator is typed but the motion is pending is called "operator pending"
+
+MOTIONS-MARKS
+------------------------|-----------------------------------|
+'   `                   |   first non blank / specified loc |
+                        |                                   |
+m{a-zA-Z}               |   set marks                       |
+                        |                                   |
+m'  m`                  |   set previous context marks      |   for `` and '', explicitly adds a jump
+                        |                                   |
+m[  m]                  |   set '[ and ']                   |
+                        |                                   |
+m<  m>                  |   set '< and '>                   |
+                        |                                   |
+'{a-z}  `{a-z}          |   jump to mark in current buffer  |
+                        |                                   |
+'{A-Z0-9}   `{A-Z0-9}   |   jump to mark in file            |
+                        |                                   |
+g'{mark}    g`{mark}    |   jump - jumplist unchanged       |
+                        |                                   |
+:delm                   |   delete marks                    |
+                        |                                   |
+'[  `[                  |   1st char prev changed or yanked |
+                        |                                   |
+']  `]                  |   last char prev changed or yanked|
+                        |                                   |
+'<  `<                  |   1st of last selected visual     |
+                        |                                   |
+'>  `>                  |   last of last selected visual    |
+                        |                                   |
+''  ``                  |   position before last jump       |
+                        |                                   |
+'"  `"                  |   position before leavin buf      |
+                        |                                   |
+'^  `^                  |   position whwen leaving ins mode |
+                        |                                   |
+'.  `.                  |   last change position            |
+                        |                                   |
+'(  `(  ')  `)          |   start/end of sentence           |
+                        |                                   |
+'{  `{  '}  `}          |   start/end of paragraph          |
+                        |                                   |
+]'  ]`  ['  [`          |   next/prev line with a-z mark    |
+                        |                                   |
+
+- a-z   Lowercase marks are valid in a buffer and are lost when the buffer closes
+- A-Z   File marks that can be jumped to among buffers
+- 0-9   Cannot be set directly
+
+MOTIONS-VARIOUS
+------------------------|-----------------------------------|
+%                       |   jump to matching ([{}])/**/     |
+                        |                                   |
+[(  [{  ])  ]}          |   go to unmatched thing           |
+                        |                                   |
+]m  ]M  [m  [M          |   method starts and ends          |
+                        |                                   |
+[*  [/  ]*  ]/          |   to start/end of C comments      |
+                        |                                   |
+
+
+MOTIONS-JUMPS
+------------------------|-----------------------------------|
+<C-O>                   |   go to older jump position       |
+                        |                                   |
+<C-I>   <Tab>           |   go to newer jump postion        | <Tab> already remapped for buffers
+                        |                                   |
+
+- Not really seeing <C-I> move forward in the jumplist - It seems to loop through some jumps
+    It doesn't seem to do anything with the jumplist.  The pointer moves to the start of the list. 
+    Maybe a plug has it remapped?
+    Nope, my remap of <Tab> effected <C-I> as well. <C-I> works fine without <Tab> remapped
+    It's a terminal thing: https://www.leonerd.org.uk/hacks/fixterms/
+    Wezterm has a setting, false by default: enable_csi_u_key_encoding
+- Switching windows does not add to the jumplist
+- Switching buffers in a window does add to the jumplist
+
+===pattern.txt===
+
+SEARCH
+------------------------|-----------------------------------|
+/   /p  /p/o    //o     |   search fwd with offset          |
+                        |                                   |
+?   ?p  ?p?o    ??      |   search bkd with offset          |
+                        |                                   |
+n   N                   |   repeat same/opposite direction  |
+                        |                                   |
+*   #   g*  g#          |   fwd/bwd word under cursor       |
+                        |                                   |
+gd  gD  1gd 1gD         |   local/global decl / ignore {}   |
+                        |                                   |
+CTRL-c  :noh            |   interrupt / remove highlights   |
+                        |                                   |
+:let @/ = ""            |   clear last search (keybind?)    |
+                        |                                   |
+
+SEARCH - PATTERNS
+------------------------|-----------------------------------|
+\m  \M                  |   force magic/nomagic for 1 ptrn  |
+                        |                                   |
+\c  \C                  |   ignore/respect case             |
+                        |                                   |
+\%[<>num]l  \%.<>l      |   match at/above/below line       |
+                        |                                   |
+\%V                     |   match inside visual             |
+                        |                                   |
+
+*   a pattern is one or more branches, separated by \| (or)
+*   a branch is one or more concats, separated by \& (and)
+*   a concat is one or more pieces, concatenated
+*   a piece is an atom, possibly followed by a multi (like *)
+
+- `magic` refers to the behavior of the special regex chars
+- regex reference is in "pattern.txt"
+- the `offest` tells where to position the cursor relative
+    to the match: [num], +, - e, s
+- can prefix with operators
+- Two patterns are remembered: search and substitute, used
+    for empty patterns
+- `shortmess` is an interesting option
+
+===windows.txt===
+
+CTRL-W
+------------------------|-----------------------------------|
+s   <C-s>   v   <C-v>   |   split horizontal/vertical       |
+                        |                                   |
+:                       |   enter the cmd mode (terminal)   |
+                        |                                   |
+q   c                   |   quit/close current window       |
+                        |                                   |
+K   J   H   L           |   move win using full width/height|
+                        |                                   |
+=                       |   equalize everything             |
+                        |                                   |
+-   +   <   >           |   dec/inc window height/width     |
+                        |                                   |
+_   |                   |   set height/width                |
+                        |                                   |
+]   g]  f   gf  F       |   split with idents               |
+                        |                                   |
+
+
+
+===editing.txt===
+
+===insert.txt===
+
+===change.txt===
+
+===scroll.txt===
+
+
+Keywords
+--------------------
+# * back/fwd kwd/ident under cursor
+K   desc kwd under cursor
+
+Motion
+-------------------
+'   cursor to first char - not understanding how this works with ( ).
+`   cursor to line - This is acting more like first char.
+wWeEbB  Move by words and WORDS
+
+fFtT    cursor to/after/before char right/LEFT
+; ,     repeat last fFtT
+
+Objects
+---------------------
+( ) sentences - acts like para where there are no periods.
+{ } paragraphs 
+< > highlighted area
+[ ] last operated text
+
+Brackets?
+---------------------
+%   goto matching thing
+    bracket/comment/preproc
+
+
+Search/Replace
+---------------------
+&   repeat last :s
+/   search forward
+?   search backward
+
+Operations
+--------------------
+A   append to end of line
+
+I need some sentences and paragaphs for testing out some of these crazy
+keybindings. It would be nice to know how it handles CRs in the absence
+of word wraps among other things.
+
+I'd like to try organizing things by purpose.  I'm sure the help files
+do this, but my brain is having trouble.  The click is not yet occurring.
+    Interesting.  I put a period and hit enter, and vim decided to indent this
+    line.
+
+So this should be the last paragraph I write.  Hopefully this will help me
+understand the key bindings a little better.
+

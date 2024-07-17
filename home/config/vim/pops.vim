@@ -12,8 +12,8 @@ vim9script
 # TODO: `tree` output in a popup?
 # TODO: Wrtie cheat sheet as a vim help file.
 
-const extraHelpTxt: string = $HOME .. "/.config/vim/vim.cheat"
-const extraHelpCmd: list<string> = ["cat", extraHelpTxt]
+const motionCheats: string = $HOME .. "/.config/vim/motion.normal.cheat"
+# const extraHelpCmd: list<string> = ["cat", motionCheats]
 const treeCmd: list<string> = ["tree", "-I", "node_modules"]
 var winid: number
 var bufnr: number
@@ -60,8 +60,8 @@ def g:TogglePop(cmd: list<string>): number
     endif
 enddef
 
-command -nargs=0 PopExtraHelp g:TogglePop(extraHelpCmd)
+command -nargs=0 PopMotion g:TogglePop(["cat", motionCheats])
 command -nargs=0 PopTree g:TogglePop(treeCmd)
 
-nnoremap <leader>c :PopExtraHelp<CR>
+nnoremap <leader>cm :PopMotion<CR>
 nnoremap <leader>e :PopTree<CR>

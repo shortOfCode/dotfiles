@@ -1,0 +1,39 @@
+OPERATORS                                                       MOTIONS-MARKS                                                   
+------------------------|-----------------------------------|   ------------------------|-----------------------------------|
+c   i   a   d   y       |   change/yank                     |   '   `                   |   first non blank / specified loc |
+C   I   A   D   Y       |   operate to/at start/end of line |   m{a-zA-Z}               |   set marks                       |
+g~  gu  gU              |   upper/lowercase                 |   m'  m`                  |   set previous context marks      |
+!   =                   |   filter (equalprg)               |   m[  m]                  |   set '[ and ']                   |
+gq  gw                  |   txt format w/wout cursor move   |   m<  m>                  |   set '< and '>                   |
+>   <                   |   shift/indent                    |   '{a-z}  `{a-z}          |   jump to mark in current buffer  |
+g@                      |   operatorfunc                    |   '{A-Z0-9}   `{A-Z0-9}   |   jump to mark in file            |
+                                                                g'{mark}    g`{mark}    |   jump - jumplist unchanged       |
+                                                                :delm                   |   delete marks                    |
+MOTIONS/LEFT-RIGHT-UP-DOWN                                      '[  `[                  |   1st char prev changed or yanked |
+------------------------|-----------------------------------|   ']  `]                  |   last char prev changed or yanked|
+h                       |   move left                       |   '<  `<                  |   1st of last selected visual     |
+l                       |   move right                      |   '>  `>                  |   last of last selected visual    |
+j                       |   move down, direct or eol        |   ''  ``                  |   position before last jump       |
+k                       |   move up, direct or eol          |   '"  `"                  |   position before leavin buf      |
+_ (underscore)          |   move n-1 down                   |   '^  `^                  |   position whwen leaving ins mode |
+0   ^   $   g_  g0  g^  |   start/end of line               |   '.  `.                  |   last change position            |
+                        |    g's move on what is visible    |   '(  `(  ')  `)          |   start/end of sentence           |
+gm  gM  gj  gk          |   half line / "display" line dn/up|   '{  `{  '}  `}          |   start/end of paragraph          |
+|   G   gg  %           |   move to column/line num/pct     |   ]'  ]`  ['  [`          |   next/prev line with a-z mark    |
+f   t   F   T   ;   ,   |   move right/left to char repeat  |   
+                        |   lwrcase is incl, uprcase is excl|   - a-z   Lowercase marks are valid in a buffer and are lost   
+                                                                    when the buffer closes                                      
+MOTIONS-SELECTIONS/WORDS-words-text-objects                     - A-Z   File marks that can be jumped to among buffers
+------------------------|-----------------------------------|   - 0-9   Cannot be set directly
+w   W   e   E           |   fwd to start/end of word/WORD   |   
+b   B   ge  gE          |   bkd to start/end of word/WORD   |   
+(   )   {   }           |   sentence and paragraph moves    |   MOTIONS-VARIOUS
+]]  ][  [[  []          |   sections { } fwd/bkd            |   ------------------------|-----------------------------------|
+i   a                   |   inner/outer selection           |   %                       |   jump to matching ([{}])/**/     |
+s   p   b   B   "'`     |   sent/para/block/brace/qoute objs|                           |                                   |
+                                                                [(  [{  ])  ]}          |   go to unmatched thing           |
+- WORDS are separated by whitespace, strictly                                           |                                   |
+- motions that move between lines affect lines                  ]m  ]M  [m  [M          |   method starts and ends          |
+- motions that within a line affect characters                                          |                                   |
+- the operator is typed but the motion is pending is called     [*  [/  ]*  ]/          |   to start/end of C comments      |
+    "operator pending"                                          

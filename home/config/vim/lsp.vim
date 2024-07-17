@@ -2,7 +2,7 @@ vim9script
 
 # -yegappan/lsp
 # :h fold-commands for keybinding
-
+set keywordprg=:LspHover
 var lspServers = [
     {
         name: 'rustanalyzer',
@@ -34,31 +34,6 @@ var lspServers = [
         args: ['start']
     },
     {
-        name: 'emmet',
-        filetype: 'html',
-        path: 'emmet-language-server',
-        args: ['--stdio']
-
-    },
-    {
-        name: 'vscode-html-server',
-        filetype: 'html',
-        path: 'vscode-html-language-server',
-        args: ['--stdio']
-    },
-    {
-        name: 'vscode-css-server',
-        filetype: 'css',
-        path: 'vscode-css-language-server',
-        args: ['--stdio']
-    },
-    {
-        name: 'tsserver',
-        filetype: ['javascript', 'typescript'],
-        path: 'typescript-language-server',
-        args: ['--stdio']
-    },
-    {
         name: 'pylsp',
         filetype: 'python',
         path: 'pyls',
@@ -66,36 +41,67 @@ var lspServers = [
     }
 ]
 g:LspAddServer(lspServers)
-g:LspOptionsSet({"snippetSupport": v:true})
+g:LspOptionsSet({
+    "snippetSupport": v:true,
+    "showDiagWithVirtualText": v:true,
+    "diagVirtualTextAlign": "after",
+    "useQuickfixForLocations": v:true
+})
 
 # autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 # Tab through lsp suggestions
-inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
-inoremap <expr> <S-tab> pumvisible() ? '<c-p>' : '<S-tab>'
+# inoremap <expr> <tab> pumvisible() ? '<c-n>' : '<tab>'
+# inoremap <expr> <S-tab> pumvisible() ? '<c-p>' : '<S-tab>'
 
-# nnoremap <leader>dn :LspDiag next<CR>
-# nnoremap <leader>dN :LspDiag prev<CR>
+# :LspCodeLens<CR>                  # applies
+# :LspCodeAction<CR>
+# :LspDiag current<CR>              # current line / optionally popup, auto
+# :LspDiag! current<CR>             # ditto
+# :LspDiag here<CR>                 # jump
+# :LspDaig first<CR>                # jump
+# :LspDiag next<CR>                 # jump
+# :LspDiag nextWrap<CR>             # jump
+# :LspDiag prev<CR>                 # jump
+# :LspDiag prevWrap<CR>             # jump
+# :LspDiag last<CR>                 # jump
+# :LspDiag highlight enable<CR>     # default
+# :LspDiag highlight disable<CR>
+# :LspDiag show<CR>
 
-# nnoremap gs <Nop>
-# nnoremap go <Nop>
-# nnoremap gb <Nop>
-# nnoremap gl <Nop>
-# nnoremap gx <Nop>
-# nnoremap zq <Nop>
+# :LspDocumentSymbol<CR>            # popup
+# :LspHover<CR>                     # K
+# :LspInlayHints enable<CR>
+# :LspInlayHints disable<CR>
+# :LspOutline<CR>
+# :LspShowReferences<CR>
 
-nnoremap <leader>ln :LspDiag nextWrap<CR>
-nnoremap <leader>lp :LspDiag prevWrap<CR>
-nnoremap <leader>lc :LspDiag current<CR>
-nnoremap <leader>ll :LspHover<CR>
-nnoremap <leader>lh :LspHightlight<CR>
-# :LspHightlightClear
+# :LspGotoDeclaration<CR>
+# :LspGotoDefinition:<CR>           # gd suggested
+# :LspGotoImpl<CR>                  # gi suggested
+# :LspGotoTypeDef<CR>               # gt suggested
+# :LspPeekDeclaration<CR>
+# :LspPeekDefinition<CR>
+# :LspPeekImpl<CR>
+# :LspPeekReferences<CR>
+# :LspPeekTypeDef<CR>
+# :LspSymbolSearch<CR>
 
-nnoremap <leader>le :LspCodeLens<CR>
-nnoremap <leader>la :LspCodeAction<CR>
+# :LspHightlight<CR>
+# :LspHighlightClear<CR>
 
-# :LspGotoDefinition
-# :LspGotoDeclaration
-# :LspGotoImpl
-# :LspGotoTypeDef
+# :LspSelectionExpand<CR>
+# :LspSelectionShrink<CR>
 
+# :LspCallHierarchyRefresh<CR>
+# :LspCallHierarchyIncoming<CR>
+# :LspCallHierarchyOutgoing<CR>
+# :LspSubTypeHierarchy<CR>
+# :LspSuperTypeHierarchy<CR>
+
+# :LspFold
+# :LspFormat
+# :LspRename
+
+# :LspServer restart
+# :LspShowAllServers

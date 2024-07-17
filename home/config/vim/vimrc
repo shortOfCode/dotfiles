@@ -3,14 +3,15 @@ vim9script
 g:mapleader = ','
 
 # TODO
-# - Git keybinds
 # - Select-mode?
 
-import "~/.config/vim/pops.vim"
-import "~/.config/vim/html.vim"
-
 import "~/.config/vim/pack.vim"
-import "~/.config/vim/lsp.vim"
+# import "~/.config/vim/remap.vim"
+import "~/.config/vim/pops.vim"
+import "~/.config/vim/web.vim"
+import "~/.config/vim/ts.vim"
+
+# import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
 
@@ -27,6 +28,7 @@ set ttimeoutlen=0
 set timeoutlen=500
 set wildmenu
 set bg=dark
+set viminfo='0,<50,s10,h
 syntax on
 
 # Buffer stuff
@@ -62,31 +64,6 @@ nmap <Down> <Nop>
 nmap <Left> <Nop>
 nmap <Right> <Nop>
 
-# Available for remap
-nmap + <Nop>
-nmap - <Nop>
-nnoremap gs <Nop>
-# nnoremap go <Nop>
-nnoremap gb <Nop>
-nnoremap gl <Nop>
-nnoremap gx <Nop>
-nnoremap zq <Nop>
-# inoremap <C-J> <Nop>
-# inoremap <C-I> <Nop>
-
-# Motions And Typing
-
-nnoremap K {
-nnoremap J }
-nnoremap H ^
-nnoremap L $
-
-## Move the cursor around in insert mode. (for now)
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
 ## Close then type
 # inoremap <> <><Left> # while tinkering with html
 inoremap () ()<Left>
@@ -97,7 +74,7 @@ inoremap '' ''<Left>
 inoremap `` ``<Left>
 
 ## Make space in between surrounding things
-inoremap <leader>{ {<CR>}<Esc>ko<C-f>
+# inoremap <leader>{ {<CR>}<Esc>ko<C-f>
 inoremap <leader><CR> <CR><Esc>ko<C-f>
 
 # Windows/Splits
@@ -131,8 +108,8 @@ nnoremap <S-Down> <C-w>-
 
 ## Switching buffers
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprev<CR>
+# nnoremap <Tab> :bnext<CR>
+# nnoremap <S-Tab> :bprev<CR>
 nnoremap <leader>bd :b#<bar>:bd#<CR>
 
 # call setbufvar(bufnr, 'buflisted', 0)  # Allows tab through?
