@@ -11,6 +11,7 @@ MANPATH=$(manpath)
 # dev tools
 export EDITOR=vim
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
+export GOBIN=$HOME/.local/bin
 
 #  NPM Stuff
 export NVM_DIR="$HOME/.nvm"
