@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# https://git.zx2c4.com/password-store/tree/contrib/dmenu
+# Covered by this license:  https://git.zx2c4.com/password-store/tree/COPYING
+
 shopt -s nullglob globstar
 
 typeit=0
