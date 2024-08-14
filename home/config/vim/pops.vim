@@ -9,7 +9,6 @@ vim9script
 # my cheat sheet as a help file.)
 #
 # TODO: Make <ESC> close the popup
-# TODO: `tree` output in a popup?
 # TODO: Wrtie cheat sheet as a vim help file.
 
 const motionCheats: string = $HOME .. "/.config/vim/motion.normal.cheat"
