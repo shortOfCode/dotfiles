@@ -12,9 +12,9 @@ shopt -s direxpand
 
 eval "$(dircolors -b)"
 
-. $HOME/.config/bash/alias
 . $HOME/.config/bash/env
 . $HOME/.config/bash/complete
 . $HOME/.config/bash/prompt
+. $HOME/.config/bash/alias
 
 scent
