@@ -11,7 +11,7 @@ import "~/.config/vim/pops.vim"
 import "~/.config/vim/web.vim"
 import "~/.config/vim/ts.vim"
 
-# import "~/.config/vim/lsp.vim"
+import "~/.config/vim/lsp.vim"
 import "~/.config/vim/color.vim"
 import "~/.config/vim/fzf.vim"
 
@@ -74,8 +74,11 @@ inoremap '' ''<Left>
 inoremap `` ``<Left>
 
 ## Make space in between surrounding things
-# inoremap <leader>{ {<CR>}<Esc>ko<C-f>
 inoremap <leader><CR> <CR><Esc>ko<C-f>
+
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-e> <Esc>A
 
 # Windows/Splits
 
