@@ -38,13 +38,19 @@ var lspServers = [
         filetype: 'python',
         path: 'pyls',
         args: []
+    },
+    {
+        name: 'ocamllsp',
+        filetype: 'ocaml',
+        path: 'ocamllsp',
+        args: []
     }
+
 ]
 g:LspAddServer(lspServers)
+# Can I set and unset options based on FileType?
 g:LspOptionsSet({
-    "snippetSupport": v:true,
-    "showDiagWithVirtualText": v:true,
-    "diagVirtualTextAlign": "after",
+    "snippetSupport": v:true, # this is just for emmet
     "useQuickfixForLocations": v:true
 })
 
@@ -61,16 +67,16 @@ g:LspOptionsSet({
 # :LspDiag here<CR>                 # jump
 # :LspDaig first<CR>                # jump
 # :LspDiag next<CR>                 # jump
-# :LspDiag nextWrap<CR>             # jump
+nnoremap gn :LspDiag nextWrap<CR>
 # :LspDiag prev<CR>                 # jump
-# :LspDiag prevWrap<CR>             # jump
+nnoremap gN :LspDiag prevWrap<CR>
 # :LspDiag last<CR>                 # jump
 # :LspDiag highlight enable<CR>     # default
 # :LspDiag highlight disable<CR>
 # :LspDiag show<CR>
 
 # :LspDocumentSymbol<CR>            # popup
-# :LspHover<CR>                     # K
+# :LspHover<CR>                     # K seems already mapped
 # :LspInlayHints enable<CR>
 # :LspInlayHints disable<CR>
 # :LspOutline<CR>
