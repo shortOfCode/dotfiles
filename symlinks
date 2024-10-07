@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# FZF, Vim and Wezterm are built from source
-# Go, luals is extracted from tarball
-# Bash, typescript, emmet and vscode-extracted are prefixed npm installs 
-# pyls (not pylsp) installed via normal pip install
-
 cwd=$(pwd)
 configDir=$HOME/.config
 mkdir -p $configDir
@@ -13,10 +8,6 @@ symlink () {
     ln -snvf "$1" "$2"
 }
 
-# The script we need for symlinking binaries needs to be in the PATH first
-symlink "$cwd/linkbins" "$HOME/.local/bin/linkbins"
-
-
 symlink "$cwd/home/config/tmux"         "$HOME/.config/tmux"
 symlink "$cwd/home/config/wezterm"      "$HOME/.config/wezterm"
 symlink "$cwd/home/config/vim"          "$HOME/.config/vim"
@@ -24,27 +15,6 @@ symlink "$cwd/home/config/bash"         "$HOME/.config/bash"
 symlink "$cwd/home/config/surf"         "$HOME/.config/surf"
 
 symlink "$cwd/home/config/vim/vimrc"    "$HOME/.vimrc"
-symlink "$cwd/home/config/bash/bashrc"  "$HOME/.bashrc"
 symlink "$cwd/home/config/bash/profile" "$HOME/.profile"
+symlink "$cwd/home/config/bash/bashrc"  "$HOME/.bashrc"
 
-if [ -d "$cwd/home/local/bin/dmenu" ]; then
-    cd "$cwd/home/local/bin/dmenu"
-    linkbins
-    cd "$cwd"
-fi
-
-if [ -d "$HOME/pkgs/wezterm/target/release" ]; then
-    cd "$HOME/pkgs/wezterm/target/release"
-    linkbins
-    cd "$cwd"
-fi
-
-if [ -d "$HOME/pkgs/golang/current/bin" ]; then
-    cd "$HOME/pkgs/golang/current/bin"
-    linkbins
-    cd "$cwd"
-fi
-
-if [ -d "$HOME/.vim/pack/plugins/start/fzf/target" ]; then
-    symlink "$HOME/.vim/pack/plugins/start/fzf/target/fzf-linux_amd64" "$HOME/.local/bin/fzf"
-fi
