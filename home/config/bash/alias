@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # some aliases
-alias ls='LC_COLLATE=C ls -F --group-directories-first --color=auto'
+if [ "$(uname)" == "Darwin" ]; then
+    alias ls='ls -F --color=auto'
+else
+    alias ls='LC_COLLATE=C ls -F --group-directories-first --color=auto'
+fi
 alias ll='ls -l'
 alias la='ls -la'
 
