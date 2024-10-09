@@ -12,7 +12,11 @@ bg_wd='\[$(tput setab 0)\]'
 fg_git='\[$(tput setaf 7)\]'
 bg_git='\[$(tput setab 235)\]'
 
-source /etc/bash_completion.d/git-prompt
+if [[ -r /etc/bash_completion.d/git-prompt ]]; then
+    source /etc/bash_completion.d/git-prompt
+else
+    source $HOME/.local/bin/git-prompt
+fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWSTASHSTATE=1
