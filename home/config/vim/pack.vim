@@ -11,7 +11,8 @@ var packs = {
     'fugitive': 'https://tpope.io/vim/fugitive.git',
     'vim-gitgutter': 'https://github.com/airblade/vim-gitgutter.git',
     'commentary': 'https://tpope.io/vim/commentary.git',
-    'emmet-vim': 'https://github.com/mattn/emmet-vim.git'
+    'emmet-vim': 'https://github.com/mattn/emmet-vim.git',
+    'vim-blade': 'https://github.com/jwalton512/vim-blade.git'
 }
 
 def ClonePack(pack: string): number
