@@ -72,13 +72,14 @@ inoremap [] []<Left>
 inoremap "" ""<Left>
 inoremap '' ''<Left>
 inoremap `` ``<Left>
+inoremap {<CR> {}<Left><CR><Esc>ko<C-f>
+inoremap {<Space> {<Space><Space>}<Left><Left>
+inoremap (<CR> ()<Left><CR><Esc>ko<C-f>
+inoremap (<Space> (<Space><Space>)<Left><Left>
+inoremap [<CR> []<Left><CR><Esc>ko<C-f>
+inoremap [<Space> [<Space><Space>]<Left><Left>
 
-## Make space in between surrounding things
-inoremap <leader><CR> <CR><Esc>ko<C-f>
-
-inoremap <C-l> <Right>
-inoremap <C-h> <Left>
-inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>%%a
 
 # Windows/Splits
 
