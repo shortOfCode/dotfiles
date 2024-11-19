@@ -6,7 +6,7 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-MANPATH=$(manpath)
+MANPATH=$(manpath -q)
 
 # brew
 if [ -x /opt/homebrew/bin/brew ]; then
