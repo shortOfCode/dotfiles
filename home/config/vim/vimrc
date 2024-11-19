@@ -79,7 +79,8 @@ inoremap (<Space> (<Space><Space>)<Left><Left>
 inoremap [<CR> []<Left><CR><Esc>ko<C-f>
 inoremap [<Space> [<Space><Space>]<Left><Left>
 
-inoremap <C-a> <Esc>%%a
+inoremap <C-g>a <Esc>%%a
+inoremap <C-g>] <Esc>/[)}\]]<CR>:noh<CR>a
 
 # Windows/Splits
 
