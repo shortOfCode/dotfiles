@@ -37,3 +37,9 @@ s   p   b   B   "'`     |   sent/para/block/brace/qoute objs|                   
 - motions that within a line affect characters                                          |                                   |
 - the operator is typed but the motion is pending is called     [*  [/  ]*  ]/          |   to start/end of C comments      |
     "operator pending"                                          
+
+GIT THINGS (Involves Fugitive and GitGutter)
+------------------------|-----------------------------------|
+]c  [c                  |   jump fwd/back to next change    |
+<leader>hp              |   preview hunk change             |
+<leader>hu/hs           |   undo/stage hunk                 |
