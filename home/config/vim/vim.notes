@@ -205,7 +205,13 @@ _   |                   |   set height/width                |
 ]   g]  f   gf  F       |   split with idents               |
                         |                                   |
 
+- window ID does not change, window number (winnr) changes
+- :close works on buffers, :hide works on windows
 
+_remap possibilities_
+
+~ CTRL-W s/v
+~ CTRL-W CTRL-^
 
 ===editing.txt===
 
@@ -215,6 +221,10 @@ _   |                   |   set height/width                |
 
 ===scroll.txt===
 
+===other things===
+
+- ++opt Forces fileformat, fileencoding, binary to a particular value for 1 :command 
+- +cmd  after executing a :command, position the cursor or exe another :command
 
 Keywords
 --------------------

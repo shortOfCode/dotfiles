@@ -68,12 +68,12 @@ nmap <Right> <Nop>
 
 ## Close then type
 # inoremap <> <><Left> # while tinkering with html
-inoremap () ()<Left>
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap `` ``<Left>
+# inoremap () ()<Left>
+# inoremap {} {}<Left>
+# inoremap [] []<Left>
+# inoremap "" ""<Left>
+# inoremap '' ''<Left>
+# inoremap `` ``<Left>
 inoremap {<CR> {}<Left><CR><Esc>ko<C-f>
 inoremap {<Space> {<Space><Space>}<Left><Left>
 inoremap (<CR> ()<Left><CR><Esc>ko<C-f>
